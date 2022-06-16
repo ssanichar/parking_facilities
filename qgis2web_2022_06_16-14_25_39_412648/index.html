@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        #map {
+            width: 1156px;
+            height: 822px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/nynta2020_22anynta2020_1.js"></script>
+        <script src="data/OffStreetParkingOff_Street_Parking_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[40.57286137713691,-74.12685812381912],[40.913882624136924,-73.64693310060201]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_Positronretina_0');
+        map.getPane('pane_Positronretina_0').style.zIndex = 400;
+        var layer_Positronretina_0 = L.tileLayer('http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png', {
+            pane: 'pane_Positronretina_0',
+            opacity: 1.0,
+            attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_Positronretina_0;
+        map.addLayer(layer_Positronretina_0);
+        function pop_nynta2020_22anynta2020_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BoroCode'] !== null ? autolinker.link(feature.properties['BoroCode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BoroName'] !== null ? autolinker.link(feature.properties['BoroName'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CountyFIPS'] !== null ? autolinker.link(feature.properties['CountyFIPS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NTA2020'] !== null ? autolinker.link(feature.properties['NTA2020'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NTAName'] !== null ? autolinker.link(feature.properties['NTAName'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NTAAbbrev'] !== null ? autolinker.link(feature.properties['NTAAbbrev'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NTAType'] !== null ? autolinker.link(feature.properties['NTAType'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CDTA2020'] !== null ? autolinker.link(feature.properties['CDTA2020'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CDTAName'] !== null ? autolinker.link(feature.properties['CDTAName'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Shape_Leng</strong><br />' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_nynta2020_22anynta2020_1_0() {
+            return {
+                pane: 'pane_nynta2020_22anynta2020_1',
+                opacity: 1,
+                color: 'rgba(2,1,1,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_nynta2020_22anynta2020_1');
+        map.getPane('pane_nynta2020_22anynta2020_1').style.zIndex = 401;
+        map.getPane('pane_nynta2020_22anynta2020_1').style['mix-blend-mode'] = 'normal';
+        var layer_nynta2020_22anynta2020_1 = new L.geoJson(json_nynta2020_22anynta2020_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_nynta2020_22anynta2020_1',
+            layerName: 'layer_nynta2020_22anynta2020_1',
+            pane: 'pane_nynta2020_22anynta2020_1',
+            onEachFeature: pop_nynta2020_22anynta2020_1,
+            style: style_nynta2020_22anynta2020_1_0,
+        });
+        bounds_group.addLayer(layer_nynta2020_22anynta2020_1);
+        map.addLayer(layer_nynta2020_22anynta2020_1);
+        function pop_OffStreetParkingOff_Street_Parking_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Capacity</strong><br />' + (feature.properties['Capacity'] !== null ? autolinker.link(feature.properties['Capacity'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FacType</strong><br />' + (feature.properties['FacType'] !== null ? autolinker.link(feature.properties['FacType'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_OffStreetParkingOff_Street_Parking_2_0(feature) {
+            if (feature.properties['Capacity'] >= 6.000000 && feature.properties['Capacity'] <= 163.000000 ) {
+                return {
+                pane: 'pane_OffStreetParkingOff_Street_Parking_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,249,232,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['Capacity'] >= 163.000000 && feature.properties['Capacity'] <= 460.000000 ) {
+                return {
+                pane: 'pane_OffStreetParkingOff_Street_Parking_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,228,188,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['Capacity'] >= 460.000000 && feature.properties['Capacity'] <= 1144.000000 ) {
+                return {
+                pane: 'pane_OffStreetParkingOff_Street_Parking_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,204,196,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['Capacity'] >= 1144.000000 && feature.properties['Capacity'] <= 3739.000000 ) {
+                return {
+                pane: 'pane_OffStreetParkingOff_Street_Parking_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(67,162,202,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['Capacity'] >= 3739.000000 && feature.properties['Capacity'] <= 6640.000000 ) {
+                return {
+                pane: 'pane_OffStreetParkingOff_Street_Parking_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,104,172,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_OffStreetParkingOff_Street_Parking_2');
+        map.getPane('pane_OffStreetParkingOff_Street_Parking_2').style.zIndex = 402;
+        map.getPane('pane_OffStreetParkingOff_Street_Parking_2').style['mix-blend-mode'] = 'normal';
+        var layer_OffStreetParkingOff_Street_Parking_2 = new L.geoJson(json_OffStreetParkingOff_Street_Parking_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_OffStreetParkingOff_Street_Parking_2',
+            layerName: 'layer_OffStreetParkingOff_Street_Parking_2',
+            pane: 'pane_OffStreetParkingOff_Street_Parking_2',
+            onEachFeature: pop_OffStreetParkingOff_Street_Parking_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_OffStreetParkingOff_Street_Parking_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_OffStreetParkingOff_Street_Parking_2);
+        map.addLayer(layer_OffStreetParkingOff_Street_Parking_2);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        setBounds();
+        </script>
+    </body>
+</html>
